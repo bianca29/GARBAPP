@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F2AAAA">
+
+            <TextView
+                android:id="@+id/registro_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center"
+                android:padding="25dp"
+                android:text="Registrate"
+                android:textAllCaps="false"
+                android:textSize="60sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFDB"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:padding="15dp"
+                            android:text="Nombre y Apellidos"
+                            android:textColor="#000000" />
+
+                        <EditText
+                            android:id="@+id/email"
+                            android:layout_width="200dp"
+                            android:layout_height="50dp"
+                            android:background="@null"
+                            android:gravity="center"
+                            android:hint="nombre y apellidos"
+                            android:padding="15dp"
+                            android:selectAllOnFocus="false"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000" />
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:padding="15dp"
+                            android:text="Distrito"
+                            android:textColor="#000000" />
+
+                        <Spinner
+                            android:id="@+id/spinner01"
+                            android:layout_width="310dp"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:padding="15dp"
+                            android:text="Email"
+                            android:textColor="#000000" />
+
+                        <EditText
+                            android:id="@+id/nombre"
+                            android:layout_width="200dp"
+                            android:layout_height="50dp"
+                            android:background="@null"
+                            android:gravity="center"
+                            android:hint="email"
+                            android:padding="15dp"
+                            android:selectAllOnFocus="true"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:padding="15dp"
+                            android:text="Contraseña"
+                            android:textColor="#000000" />
+
+                        <EditText
+                            android:id="@+id/contraseña"
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:gravity="center"
+                            android:hint="contraseña"
+                            android:inputType="textPassword"
+                            android:padding="15dp"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000" />
+
+                        <Button
+                            android:id="@+id/BotonListoRegistro"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="onClick"
+                            android:text="Registrar" />
+                </LinearLayout>
+        </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Distrito">
+        <item>Arequipa</item>
+        <item>Alto Selva Alegre</item>
+        <item>Cayma</item>
+        <item>Cerro Colorado</item>
+        <item>Characato</item>
+        <item>Chiguata</item>
+        <item>Hunter</item>
+        <item>Jose Luis Bustamante y Rivero</item>
+        <item>La Joya</item>
+        <item>Mariano Melgar</item>
+        <item>Miraflores</item>
+        <item>Mollebaya</item>
+        <item>Paucarpata</item>
+        <item>Pocsi</item>
+        <item>Polobaya</item>
+        <item>Sabandia</item>
+        <item>Sachaca</item>
+        <item>Socabaya</item>
+        <item>Tiabaya</item>
+        <item>Vitor</item>
+        <item>Yanahuara</item>
+        <item>Yarabamba</item>
+        <item>Yura</item>
+    </string-array>
+</resources>
