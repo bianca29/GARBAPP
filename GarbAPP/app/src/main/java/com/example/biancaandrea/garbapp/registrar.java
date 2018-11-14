@@ -4,6 +4,7 @@ package com.example.biancaandrea.garbapp;
  * Created by Bianca Andrea on 28/09/2018.
  */
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +17,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class registrar extends AppCompatActivity  {
+import com.example.biancaandrea.garbapp.entities.Usuario;
+
+public class registrar extends AppCompatActivity implements View.OnClickListener {
 
     EditText email,contraseña,nombre,distrito;
     Button guardar;
@@ -28,33 +31,50 @@ public class registrar extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registrar);
 
-        opciones = (Spinner) findViewById(R.id.spinner01);
-        vistaRegistro = (TextView) findViewById(R.id.registro_app) ;
-        email = (EditText) findViewById(R.id.email);
-        contraseña = (EditText) findViewById(R.id.contraseña);
-        nombre = (EditText) findViewById(R.id.nombre);
-        guardar = (Button) findViewById(R.id.BotonListoRegistro);
-        final ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this,R.array.Distrito,android.R.layout.simple_spinner_item);
-        opciones.setAdapter(adapter);
+        bind();
 
-        guardar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DB bd = new DB(getApplicationContext(), null, null, 1);
-                String email1 = email.getText().toString();
-                String contraseña1 = contraseña.getText().toString();
-                String nombre1 = nombre.getText().toString();
-                String distrito1 = opciones.getSelectedItem().toString();
-                Log.e(TAG, opciones.getSelectedItem().toString());
-                String mensaje = bd.guardar(nombre1,distrito1, email1, contraseña1);
-                Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
-            }
-        });
+        setupAdapter();
+
+        guardar.setOnClickListener(this);
+        configureFont();
+    }
+
+    private void configureFont() {
         String nombre_fuente = "font/Biysk.ttf";
         Typeface fuente = Typeface.createFromAsset(getAssets(), nombre_fuente);
         vistaRegistro.setTypeface(fuente);
-
-
     }
 
+    private void setupAdapter() {
+        final ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this,R.array.Distrito,android.R.layout.simple_spinner_item);
+        opciones.setAdapter(adapter);
+    }
+
+    private void bind() {
+        opciones = findViewById(R.id.spinner01);
+        vistaRegistro = findViewById(R.id.registro_app) ;
+        email = findViewById(R.id.email);
+        contraseña = findViewById(R.id.contraseña);
+        nombre = findViewById(R.id.nombre);
+        guardar = findViewById(R.id.BotonListoRegistro);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.BotonListoRegistro:
+                DB bd = new DB(getApplicationContext(), null, null, 1);
+                Usuario usuario = new Usuario(
+                        nombre.getText().toString(),
+                        opciones.getSelectedItem().toString(),
+                        email.getText().toString(),
+                        contraseña.getText().toString()
+                );
+                Log.e(TAG, opciones.getSelectedItem().toString());
+                String mensaje = bd.guardarUsuario(usuario);
+                Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, Login.class));
+                break;
+        }
+    }
 }

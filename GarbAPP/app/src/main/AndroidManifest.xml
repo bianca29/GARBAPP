@@ -21,7 +21,7 @@
         </activity>
         <activity
             android:name=".registrar"
-            android:label="Registrar"></activity>
+            android:label="Registrar"/>
         <activity
             android:name=".menu"
             android:label="menu"

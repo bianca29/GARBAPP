@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,9 +17,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.biancaandrea.garbapp.entities.Usuario;
+
+import org.w3c.dom.Text;
+
 public class menu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private static final String TAG = "MENU";
     TextView text_bienvenido1, text_usuario;
     Login lg = new Login();
 
@@ -26,7 +31,7 @@ public class menu extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         /*text_bienvenido1 =(TextView) findViewById(R.id.text_bienvenido);
@@ -53,6 +58,9 @@ public class menu extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView nombre_usuario = headerView.findViewById(R.id.nombre_usuario);
+        nombre_usuario.setText(Usuario.getInstance().getNombre());
         navigationView.setNavigationItemSelectedListener(this);
 
         FragmentManager fragmentManager=getSupportFragmentManager();

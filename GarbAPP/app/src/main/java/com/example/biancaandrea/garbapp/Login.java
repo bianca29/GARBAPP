@@ -14,7 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Login extends AppCompatActivity {
+import com.example.biancaandrea.garbapp.entities.Usuario;
+
+public class Login extends AppCompatActivity implements View.OnClickListener {
 
     EditText usuario, contraseña;
     Button bLogin, bRegistro;
@@ -23,40 +25,54 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        usuario = (EditText) findViewById(R.id.usuario);
-        contraseña = (EditText) findViewById(R.id.contraseña);
-        bLogin = (Button) findViewById(R.id.botonLogin);
-        bRegistro = (Button) findViewById(R.id.botonRegistro);
-        vistaFuente = (TextView) findViewById(R.id.nombre_app);
-        vistaLogin = (TextView) findViewById(R.id.textView3);
+        bind();
 
-        bLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DB bd = new DB(getApplicationContext(),null,null,1);
-                String mandarUsuario = usuario.getText().toString();
-                String mandarContraseña = contraseña.getText().toString();
-                String mensaje = bd.buscar_reg(mandarUsuario,mandarContraseña);
-                Toast.makeText(getApplicationContext(), mensaje,Toast.LENGTH_LONG).show();
-                Login.this.startActivity(new Intent(Login.this, menu.class));
-            }
-        });
+        bLogin.setOnClickListener(this);
+        bRegistro.setOnClickListener(this);
 
-        bRegistro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Login.this.startActivity(new Intent(Login.this, registrar.class));
-            }
-        });
+        configureFont();
+        DB db = new DB(this, null, null, 1);
+        db.showUsuarios();
+    }
 
+    private void bind() {
+        usuario = findViewById(R.id.usuario);
+        contraseña = findViewById(R.id.contraseña);
+        bLogin = findViewById(R.id.botonLogin);
+        bRegistro = findViewById(R.id.botonRegistro);
+        vistaFuente = findViewById(R.id.nombre_app);
+        vistaLogin = findViewById(R.id.textView3);
+    }
+
+    private void configureFont() {
         String nombre_fuente = "font/Biysk.ttf";
         Typeface fuente = Typeface.createFromAsset(getAssets(), nombre_fuente);
         vistaLogin.setTypeface(fuente);
         vistaFuente.setTypeface(fuente);
     }
-    public String guardar_nombre(){
-        String nombre = usuario.getText().toString();
-        return nombre;
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.botonLogin:
+                DB bd = new DB(getApplicationContext(),null,null,1);
+                Usuario user = bd.getUsuario(usuario.getText().toString(), contraseña.getText().toString());
+                /*String mandarUsuario = usuario.getText().toString();
+                String mandarContraseña = contraseña.getText().toString();
+                String mensaje = bd.buscar_reg(mandarUsuario,mandarContraseña);*/
+                //Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
+                if(user != null){
+                    Usuario.getInstance().setData(user);
+                    startActivity(new Intent(this, menu.class));
+                }
+                else{
+                    Toast.makeText(this, "No registrado", Toast.LENGTH_LONG).show();
+                }
+                break;
+            case R.id.botonRegistro:
+                startActivity(new Intent(this, registrar.class));
+                break;
+        }
     }
 }
 
