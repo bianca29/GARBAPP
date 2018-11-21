@@ -2,15 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFDB"
     tools:context="com.example.biancaandrea.garbapp.UserFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="SCHEDULE"
-        android:textSize="42sp"
-        android:textStyle="bold" />
+        app:srcCompat="@drawable/horario">
+
+    </ImageView>
+
 
 </FrameLayout>

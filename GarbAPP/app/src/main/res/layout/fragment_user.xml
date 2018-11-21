@@ -8,13 +8,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFFFDB"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Datos del vecino"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/text_usuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
             android:text="TextView"
+            android:background="#F2AAAA"
             android:textSize="30sp" />
 
         <TextView
@@ -22,10 +32,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Correo electronico"
-            android:textSize="20sp" />
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/text_correo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
@@ -35,11 +46,13 @@
             android:id="@+id/Distrito"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Distrito"
-            android:textSize="20sp" />
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/text_distrito"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"

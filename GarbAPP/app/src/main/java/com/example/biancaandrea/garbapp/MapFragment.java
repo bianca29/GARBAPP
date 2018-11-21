@@ -51,8 +51,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         gmap = googleMap;
-        gmap.setMinZoomPreference(12);
+        gmap.getUiSettings().setZoomControlsEnabled(true);
+        /*gmap.setMinZoomPreference(12);
         LatLng ny = new LatLng(-16.393149, -71.550259);
-        gmap.moveCamera(CameraUpdateFactory.newLatLng(ny));
+        gmap.moveCamera(CameraUpdateFactory.newLatLngZoom(ny, 35));*/
+        gmap.moveCamera(
+                CameraUpdateFactory.newLatLngZoom(new LatLng(
+                        -16.4057711,
+                        -71.5479637
+                ), 15)
+        );
     }
 }

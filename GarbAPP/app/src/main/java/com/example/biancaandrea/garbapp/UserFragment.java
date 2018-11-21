@@ -15,6 +15,8 @@ import com.example.biancaandrea.garbapp.entities.Usuario;
 public class UserFragment extends Fragment {
     private static final String TAG = "USERFRAGMENT";
     private TextView usuario;
+    private TextView correo_electronico;
+    private TextView dsitrito;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -24,6 +26,13 @@ public class UserFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
         usuario = view.findViewById(R.id.text_usuario);
         usuario.setText(Usuario.getInstance().getNombre());
+
+        correo_electronico = view.findViewById(R.id.text_correo);
+        correo_electronico.setText(Usuario.getInstance().getEmail());
+
+        dsitrito = view.findViewById(R.id.text_distrito);
+        dsitrito.setText(Usuario.getInstance().getDistrito());
+
         return view;
     }
 

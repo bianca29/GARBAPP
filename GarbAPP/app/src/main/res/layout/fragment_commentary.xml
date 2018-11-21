@@ -2,15 +2,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFDB"
     tools:context="com.example.biancaandrea.garbapp.UserFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="COMMENTARY"
         android:textSize="42sp"
-        android:textStyle="bold" />
+        android:textStyle="bold" /-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFDB"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Comentario"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/editTextMultiline"
+            android:layout_width="366dp"
+            android:layout_height="202dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:padding="15dp"
+            android:paddingLeft="60dp" />
+
+
+    </LinearLayout>
 
 </FrameLayout>
